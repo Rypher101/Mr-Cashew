@@ -1,6 +1,6 @@
 ﻿namespace Mr_Cashew.Forms
 {
-    partial class Daily_Report
+    partial class Monthly_Bank_Cashew
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.SuspendLayout();
             // 
-            // reportViewer
+            // reportViewer1
             // 
-            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer.LocalReport.ReportEmbeddedResource = "Mr_Cashew.Reports.Daily Report.rdlc";
-            this.reportViewer.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer.Name = "reportViewer";
-            this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(800, 496);
-            this.reportViewer.TabIndex = 0;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Mr_Cashew.Reports.MonthlyBankCashewReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.TabIndex = 0;
             // 
-            // Daily_Report
+            // Monthly_Bank_Cashew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 496);
-            this.Controls.Add(this.reportViewer);
-            this.Name = "Daily_Report";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.reportViewer1);
+            this.Name = "Monthly_Bank_Cashew";
             this.ShowIcon = false;
-            this.Text = "Daily Report";
-            this.Load += new System.EventHandler(this.Daily_Report_Load);
+            this.Text = "Monthly Bank Cashew";
+            this.Load += new System.EventHandler(this.Monthly_Bank_Cashew_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }

@@ -66,8 +66,23 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.20\lib\net452\MySql.Data.dll</HintPath>
@@ -84,6 +99,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -97,6 +113,7 @@
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -114,13 +131,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datasets\DataSet1.cs">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <Compile Include="Datasets\Daily DS.cs">
+      <DependentUpon>Daily DS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Datasets\DataSet1.Designer.cs">
+    <Compile Include="Datasets\Daily DS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>Daily DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\MonthlyReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyReportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\MonthlyTripCashew.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyTripCashew.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBConn.cs" />
     <Compile Include="Forms\Cashew.cs">
@@ -129,11 +156,23 @@
     <Compile Include="Forms\Cashew.Designer.cs">
       <DependentUpon>Cashew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Daily Report Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Daily Report Manager.Designer.cs">
+      <DependentUpon>Daily Report Manager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Expenses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Expenses.Designer.cs">
       <DependentUpon>Expenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Monthly Bank Cashew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Monthly Bank Cashew.Designer.cs">
+      <DependentUpon>Monthly Bank Cashew.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Size.cs">
       <SubType>Form</SubType>
@@ -195,13 +234,25 @@
     <Compile Include="Forms\Trip.Designer.cs">
       <DependentUpon>Trip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DailyReportModel.cs" />
+    <Compile Include="Models\MonthlyBankCashewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\Cashew.resx">
       <DependentUpon>Cashew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Daily Report Manager.resx">
+      <DependentUpon>Daily Report Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Daily Report.resx">
+      <DependentUpon>Daily Report.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Expenses.resx">
       <DependentUpon>Expenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Monthly Bank Cashew.resx">
+      <DependentUpon>Monthly Bank Cashew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Size.resx">
       <DependentUpon>Size.cs</DependentUpon>
@@ -240,16 +291,39 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Reports\Daily Report.rdlc" />
-    <None Include="Datasets\DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <EmbeddedResource Include="Reports\MonthlyBankCashewReport.rdlc" />
+    <None Include="Datasets\Daily DS.xsc">
+      <DependentUpon>Daily DS.xsd</DependentUpon>
     </None>
-    <None Include="Datasets\DataSet1.xsd">
+    <None Include="Datasets\Daily DS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Daily DS.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Datasets\DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="Datasets\Daily DS.xss">
+      <DependentUpon>Daily DS.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\MonthlyReportDS.xsc">
+      <DependentUpon>MonthlyReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\MonthlyReportDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MonthlyReportDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\MonthlyReportDS.xss">
+      <DependentUpon>MonthlyReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\MonthlyTripCashew.xsc">
+      <DependentUpon>MonthlyTripCashew.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\MonthlyTripCashew.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MonthlyTripCashew.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\MonthlyTripCashew.xss">
+      <DependentUpon>MonthlyTripCashew.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -276,6 +350,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

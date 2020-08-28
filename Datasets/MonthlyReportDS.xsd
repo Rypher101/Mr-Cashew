@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MonthlyReportDS" targetNamespace="http://tempuri.org/MonthlyReportDS.xsd" xmlns:mstns="http://tempuri.org/MonthlyReportDS.xsd" xmlns="http://tempuri.org/MonthlyReportDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MonthlyReportDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MonthlyReportDS" msprop:Generator_UserDSName="MonthlyReportDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Monthly_x0020_Bank_x0020_Cashew" msprop:Generator_TableClassName="Monthly_Bank_CashewDataTable" msprop:Generator_TableVarName="tableMonthly_Bank_Cashew" msprop:Generator_TablePropName="Monthly_Bank_Cashew" msprop:Generator_RowDeletingName="Monthly_Bank_CashewRowDeleting" msprop:Generator_RowChangingName="Monthly_Bank_CashewRowChanging" msprop:Generator_RowEvHandlerName="Monthly_Bank_CashewRowChangeEventHandler" msprop:Generator_RowDeletedName="Monthly_Bank_CashewRowDeleted" msprop:Generator_UserTableName="Monthly Bank Cashew" msprop:Generator_RowChangedName="Monthly_Bank_CashewRowChanged" msprop:Generator_RowEvArgName="Monthly_Bank_CashewRowChangeEvent" msprop:Generator_RowClassName="Monthly_Bank_CashewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Cashew" msprop:Generator_ColumnVarNameInTable="columnCashew" msprop:Generator_ColumnPropNameInRow="Cashew" msprop:Generator_ColumnPropNameInTable="CashewColumn" msprop:Generator_UserColumnName="Cashew" type="xs:string" minOccurs="0" />
+              <xs:element name="Income" msprop:Generator_ColumnVarNameInTable="columnIncome" msprop:Generator_ColumnPropNameInRow="Income" msprop:Generator_ColumnPropNameInTable="IncomeColumn" msprop:Generator_UserColumnName="Income" type="xs:string" minOccurs="0" />
+              <xs:element name="Cost" msprop:Generator_ColumnVarNameInTable="columnCost" msprop:Generator_ColumnPropNameInRow="Cost" msprop:Generator_ColumnPropNameInTable="CostColumn" msprop:Generator_UserColumnName="Cost" type="xs:string" minOccurs="0" />
+              <xs:element name="Profit_Rate" msprop:Generator_ColumnVarNameInTable="columnProfit_Rate" msprop:Generator_ColumnPropNameInRow="Profit_Rate" msprop:Generator_ColumnPropNameInTable="Profit_RateColumn" msprop:Generator_UserColumnName="Profit_Rate" type="xs:string" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" msprop:Generator_UserColumnName="QTY" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Monthly_x0020_Trip_x0020_Cashew" msprop:Generator_TableClassName="Monthly_Trip_CashewDataTable" msprop:Generator_TableVarName="tableMonthly_Trip_Cashew" msprop:Generator_TablePropName="Monthly_Trip_Cashew" msprop:Generator_RowDeletingName="Monthly_Trip_CashewRowDeleting" msprop:Generator_RowChangingName="Monthly_Trip_CashewRowChanging" msprop:Generator_RowEvHandlerName="Monthly_Trip_CashewRowChangeEventHandler" msprop:Generator_RowDeletedName="Monthly_Trip_CashewRowDeleted" msprop:Generator_UserTableName="Monthly Trip Cashew" msprop:Generator_RowChangedName="Monthly_Trip_CashewRowChanged" msprop:Generator_RowEvArgName="Monthly_Trip_CashewRowChangeEvent" msprop:Generator_RowClassName="Monthly_Trip_CashewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Trip" msprop:Generator_ColumnVarNameInTable="columnTrip" msprop:Generator_ColumnPropNameInRow="Trip" msprop:Generator_ColumnPropNameInTable="TripColumn" msprop:Generator_UserColumnName="Trip" type="xs:string" minOccurs="0" />
+              <xs:element name="Cashew" msprop:Generator_ColumnVarNameInTable="columnCashew" msprop:Generator_ColumnPropNameInRow="Cashew" msprop:Generator_ColumnPropNameInTable="CashewColumn" msprop:Generator_UserColumnName="Cashew" type="xs:string" minOccurs="0" />
+              <xs:element name="Income" msprop:Generator_ColumnVarNameInTable="columnIncome" msprop:Generator_ColumnPropNameInRow="Income" msprop:Generator_ColumnPropNameInTable="IncomeColumn" msprop:Generator_UserColumnName="Income" type="xs:string" minOccurs="0" />
+              <xs:element name="Cost" msprop:Generator_ColumnVarNameInTable="columnCost" msprop:Generator_ColumnPropNameInRow="Cost" msprop:Generator_ColumnPropNameInTable="CostColumn" msprop:Generator_UserColumnName="Cost" type="xs:string" minOccurs="0" />
+              <xs:element name="Profit_Rate" msprop:Generator_ColumnVarNameInTable="columnProfit_Rate" msprop:Generator_ColumnPropNameInRow="Profit_Rate" msprop:Generator_ColumnPropNameInTable="Profit_RateColumn" msprop:Generator_UserColumnName="Profit_Rate" type="xs:string" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" msprop:Generator_UserColumnName="QTY" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

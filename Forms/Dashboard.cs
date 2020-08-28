@@ -63,5 +63,10 @@ namespace Mr_Cashew.Forms
         {
             OpenForm(new Expenses());
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            OpenForm(new Daily_Report_Manager());
+        }
     }
 }
