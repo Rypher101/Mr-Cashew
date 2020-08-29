@@ -163,5 +163,10 @@ namespace Mr_Cashew.Forms
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtDesc.Text = "Transport";
+        }
     }
 }

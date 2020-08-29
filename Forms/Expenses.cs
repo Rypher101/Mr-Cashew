@@ -108,5 +108,15 @@ namespace Mr_Cashew.Forms
         {
             initDGV();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtDesc.Text = "Bank Transport";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtDesc.Text = "Buying Transport";
+        }
     }
 }

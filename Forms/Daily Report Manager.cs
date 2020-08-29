@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using Microsoft.ReportingServices.Interfaces;
 
 namespace Mr_Cashew.Forms
 {
@@ -177,6 +178,127 @@ namespace Mr_Cashew.Forms
 
             dataGridView1.DataSource = ds.Tables["Monthly Bank Cashew"];
             var frm = new Monthly_Bank_Cashew(ds, model);
+            frm.Show();
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            var ds = new MonthlyReportDS();
+            var cmd = DBConn.CreateCommand();
+            var i = 1;
+            decimal income = 0;
+            decimal cost = 0;
+            decimal rate = 0;
+            decimal expenses = 0;
+
+            cmd.CommandText = "SELECT date, place, IF(type = 2, description, name) AS name, SUM(qty), SUM(IF(type=1,qty*tripdetails.selling,0)), SUM(IF(type = 2, tripdetails.selling,qty*tripdetails.buying)), type FROM (trip INNER JOIN tripdetails ON trip.tripID = tripdetails.tripID) LEFT JOIN cashew ON tripdetails.cashID = cashew.cashID WHERE MONTH(date) = @month AND YEAR(date) = @year GROUP BY date, place, name ORDER BY type, date";
+            cmd.Parameters.AddWithValue("@month", dtpMonth.Value.Month);
+            cmd.Parameters.AddWithValue("@year", dtpMonth.Value.Year);
+            var reader = await cmd.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                if (reader.GetValue(2) is DBNull)
+                {
+                    MessageBox.Show("No records found for this month", "No data", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    reader.Dispose();
+                    return;
+                }
+
+                DataRow dr = ds.Tables["Monthly Trip Cashew"].NewRow();
+                dr["Index"] = i++;
+                dr["Date"] = reader.GetFieldValue<DateTime>(0).ToString("dd dddd");
+                dr["Trip"] = reader.GetFieldValue<string>(1);
+                dr["Cashew"] = reader.GetFieldValue<string>(2);
+                dr["QTY"] = reader.GetFieldValue<int>(6) == 1 ? Math.Round(reader.GetFieldValue<decimal>(3), 2) + "Kg" : "-";
+                dr["Income"] = reader.GetFieldValue<int>(6) == 1 ? "Rs. " + Math.Round(reader.GetFieldValue<decimal>(4), 2) : "-";
+                dr["Cost"] = "Rs. " + Math.Round(reader.GetFieldValue<decimal>(5), 2);
+                dr["Profit_Rate"] = reader.GetFieldValue<int>(6) == 1 ? Math.Round(((reader.GetFieldValue<decimal>(4) - reader.GetFieldValue<decimal>(5)) / reader.GetFieldValue<decimal>(4)) * 100) + "%" : "-";
+                ds.Tables["Monthly Trip Cashew"].Rows.Add(dr);
+
+                income += reader.GetFieldValue<decimal>(4);
+                cost += reader.GetFieldValue<int>(6) == 1 ? reader.GetFieldValue<decimal>(5) : 0;
+                expenses += reader.GetFieldValue<int>(6) == 2 ? reader.GetFieldValue<decimal>(5) : 0;
+            }
+
+            rate = ((income - (cost+expenses)) / income) * 100;
+
+            var model = new MonthlyTripCashewModel()
+            {
+                date = dtpDate.Value,
+                income = Math.Round(income, 2),
+                cost = Math.Round(cost, 2),
+                profit = Math.Round(income - (cost + expenses), 2),
+                expenses = Math.Round(expenses,2),
+                rate = Math.Round(rate, 2)
+            };
+
+            reader.Dispose();
+
+            dataGridView1.DataSource = ds.Tables["Monthly Trip Cashew"];
+            var frm = new Monthly_Trip_Cashew(ds, model);
+            frm.Show();
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            var model = new MonthlySummaryModel();
+            var cmd = DBConn.CreateCommand();
+
+            cmd.CommandText =
+                "SELECT SUM(qty*size*price/1000), SUM(qty*size*buyingPrice/1000) FROM receipt INNER JOIN resorder WHERE MONTH(date) = @month AND YEAR(date) = @year";
+            cmd.Parameters.AddWithValue("@month", dtpMonth.Value.Month);
+            cmd.Parameters.AddWithValue("@year", dtpMonth.Value.Year);
+            var reader = await cmd.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                if (!(reader.GetValue(0) is DBNull && reader.GetValue(1) is DBNull))
+                {
+                    model.bIncome = reader.GetFieldValue<decimal>(0);
+                    model.bCost = reader.GetFieldValue<decimal>(1);
+                }
+            }
+            reader.Dispose();
+
+            cmd.CommandText = "SELECT SUM(IF(type = 1, selling*qty, 0)), SUM(IF(description = 'Transport', selling, 0)), SUM(buying*qty), SUM(IF(type = 2, selling, 0)) FROM tripdetails INNER JOIN trip ON tripdetails.tripID = trip.tripID WHERE MONTH(date) = @month AND YEAR(date) = @year";
+            reader = await cmd.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                if (!(reader.GetValue(0) is DBNull && reader.GetValue(1) is DBNull && reader.GetValue(2) is DBNull))
+                {
+                    model.tIncome = reader.GetFieldValue<decimal>(0);
+                    model.tTransport = reader.GetFieldValue<decimal>(1);
+                    model.tCost = reader.GetFieldValue<decimal>(2);
+                    model.totExpenses = reader.GetFieldValue<decimal>(3);
+                }
+            }
+            reader.Dispose();
+
+            cmd.CommandText = "SELECT SUM(amount), SUM(IF(description = 'Bank Transport', amount, 0)), SUM(IF(description = 'Buying Transport', amount, 0)) FROM expenses WHERE MONTH(date) = @month AND YEAR(date) = @year";
+            reader = await cmd.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                if (!(reader.GetValue(0) is DBNull && reader.GetValue(1) is DBNull && reader.GetValue(2) is DBNull))
+                {
+                    model.totExpenses += reader.GetFieldValue<decimal>(0);
+                    model.bTransport = reader.GetFieldValue<decimal>(1);
+                    model.BuyingTransport = reader.GetFieldValue<decimal>(2);
+                }
+            }
+            reader.Dispose();
+
+            model.date = dtpMonth.Value;
+            model.totCost = model.bCost + model.tCost;
+            model.totIncome = model.bIncome + model.tIncome;
+            model.netProfit = model.totIncome - (model.totCost + model.totExpenses);
+
+            reader.Dispose();
+
+            var frm = new MonthlySummary(model);
             frm.Show();
         }
     }
